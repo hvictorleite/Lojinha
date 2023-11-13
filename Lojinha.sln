@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.Domain.Core", "Loji
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.Domain", "Lojinha.Domain\Lojinha.Domain.csproj", "{EEBF7960-BA9D-4EEC-91A4-119D24F5551D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.Infrastructure.Data", "Lojinha.Infrastructure.Data\Lojinha.Infrastructure.Data.csproj", "{1F66BDFA-1BB0-461C-90DE-C33CF3542204}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{EEBF7960-BA9D-4EEC-91A4-119D24F5551D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EEBF7960-BA9D-4EEC-91A4-119D24F5551D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEBF7960-BA9D-4EEC-91A4-119D24F5551D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F66BDFA-1BB0-461C-90DE-C33CF3542204}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F66BDFA-1BB0-461C-90DE-C33CF3542204}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F66BDFA-1BB0-461C-90DE-C33CF3542204}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F66BDFA-1BB0-461C-90DE-C33CF3542204}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
