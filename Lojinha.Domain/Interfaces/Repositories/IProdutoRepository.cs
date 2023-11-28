@@ -2,12 +2,13 @@ using Lojinha.Domain.Entities;
 
 namespace Lojinha.Domain.Interfaces.Repositories;
 
-public interface IProdutoRepository
+public interface IProdutoRepository : IDisposable
 {
-    void Create(Produto produto);
-    void Update(Produto produto);
-    void Delete(Produto produto);
-    
-    IList<Produto> GetAll();
-    Produto GetById(Guid id);
+    Task Create(Produto produto);
+    Task Update(Produto produto);
+    Task Delete(Produto produto);
+
+    Task<IList<Produto>> GetAll();
+    Task<Produto> GetById(Guid id);
+    Task<Produto> GetByNome(string nome);
 }
