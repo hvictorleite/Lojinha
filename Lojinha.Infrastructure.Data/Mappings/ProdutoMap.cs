@@ -8,5 +8,6 @@ public class ProdutoMap : IEntityTypeConfiguration<Produto>
 {
     public void Configure(EntityTypeBuilder<Produto> builder)
     {
+        builder.HasIndex(x => x.Nome);
     }
 }
