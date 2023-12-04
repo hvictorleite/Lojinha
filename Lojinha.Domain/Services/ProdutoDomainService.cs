@@ -30,16 +30,21 @@ public class ProdutoDomainService : IProdutoDomainService
 
     public IList<Produto> BuscarTodos(Produto produto)
     {
-        return _produtoRepository.GetAll();
+        return _produtoRepository.GetAll().Result;
     }
 
     public Produto BuscarPorId(Guid id)
     {
-        return _produtoRepository.GetById(id);
+        return _produtoRepository.GetById(id).Result;
+    }
+
+    public Produto BuscarPorNome(string nome)
+    {
+        return _produtoRepository.GetByNome(nome).Result;
     }
 
     public void Dispose()
     {
-        // _produtoRepository.Dispose();
+        _produtoRepository.Dispose();
     }
 }
