@@ -12,7 +12,7 @@ public class ProdutoValidation : AbstractValidator<Produto>
 
         RuleFor(p => p.Nome)
             .NotEmpty().WithMessage("O campo Nome é obrigatório.")
-            .Length(6, 100).WithMessage("O campo Nome deve ter entre 6 e 100 caracteres.");
+            .Length(6, 150).WithMessage("O campo Nome deve ter entre 6 e 150 caracteres.");
 
         RuleFor(p => p.Preco)
             .GreaterThan(0).WithMessage("O valor do campo Preco deve ser maior que zero.");
