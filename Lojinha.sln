@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lojinha.Infrastructure.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.UnitTests", "Lojinha.UnitTests\Lojinha.UnitTests.csproj", "{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.Application", "Lojinha.Application\Lojinha.Application.csproj", "{001303D4-42E3-4BD7-A955-AE4F35BBACB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +35,15 @@ Global
 		{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{001303D4-42E3-4BD7-A955-AE4F35BBACB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{001303D4-42E3-4BD7-A955-AE4F35BBACB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{001303D4-42E3-4BD7-A955-AE4F35BBACB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{001303D4-42E3-4BD7-A955-AE4F35BBACB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC7296A9-715E-4D54-9D14-0F057AF8BD3A}
 	EndGlobalSection
 EndGlobal
