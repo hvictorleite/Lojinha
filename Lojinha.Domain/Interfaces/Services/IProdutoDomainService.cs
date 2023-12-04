@@ -10,4 +10,5 @@ public interface IProdutoDomainService : IDisposable
     
     IList<Produto> BuscarTodos(Produto produto);
     Produto BuscarPorId(Guid id);
+    Produto BuscarPorNome(string nome);
 }
