@@ -3,19 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.Domain.Core", "Lojinha.Domain.Core\Lojinha.Domain.Core.csproj", "{0C2D7066-6801-4B2D-BC63-D54E0641821A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lojinha.Domain.Core", "Lojinha.Domain.Core\Lojinha.Domain.Core.csproj", "{0C2D7066-6801-4B2D-BC63-D54E0641821A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.Domain", "Lojinha.Domain\Lojinha.Domain.csproj", "{EEBF7960-BA9D-4EEC-91A4-119D24F5551D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lojinha.Domain", "Lojinha.Domain\Lojinha.Domain.csproj", "{EEBF7960-BA9D-4EEC-91A4-119D24F5551D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.Infrastructure.Data", "Lojinha.Infrastructure.Data\Lojinha.Infrastructure.Data.csproj", "{1F66BDFA-1BB0-461C-90DE-C33CF3542204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lojinha.Infrastructure.Data", "Lojinha.Infrastructure.Data\Lojinha.Infrastructure.Data.csproj", "{1F66BDFA-1BB0-461C-90DE-C33CF3542204}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lojinha.UnitTests", "Lojinha.UnitTests\Lojinha.UnitTests.csproj", "{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{0C2D7066-6801-4B2D-BC63-D54E0641821A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +29,12 @@ Global
 		{1F66BDFA-1BB0-461C-90DE-C33CF3542204}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F66BDFA-1BB0-461C-90DE-C33CF3542204}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F66BDFA-1BB0-461C-90DE-C33CF3542204}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EE87007-B100-4A7F-B3AC-82D9FCCE4A21}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
