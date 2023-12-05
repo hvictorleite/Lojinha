@@ -26,7 +26,7 @@ public class Setup : Xunit.Di.Setup
         {
             #region Localizando o arquivo appsettings.json
             var configurationBuilder = new ConfigurationBuilder();
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
+            var path = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName, "appsettings.json");
             configurationBuilder.AddJsonFile(path, false);
             #endregion
 
