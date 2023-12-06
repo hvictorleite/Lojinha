@@ -8,7 +8,7 @@ public interface IProdutoDomainService : IDisposable
     void EditarProduto(Produto produto);
     void RemoverProduto(Produto produto);
     
-    IList<Produto> BuscarTodos(Produto produto);
+    IList<Produto> BuscarTodos();
     Produto BuscarPorId(Guid id);
     Produto BuscarPorNome(string nome);
 }

@@ -28,7 +28,7 @@ public class ProdutoDomainService : IProdutoDomainService
         _produtoRepository.Delete(produto);
     }
 
-    public IList<Produto> BuscarTodos(Produto produto)
+    public IList<Produto> BuscarTodos()
     {
         return _produtoRepository.GetAll().Result;
     }

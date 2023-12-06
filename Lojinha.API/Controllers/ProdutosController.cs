@@ -16,9 +16,16 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CriarProduto([FromBody] CriarProdutoCommand command)
+    public IActionResult CriarProduto([FromBody] CriarProdutoRequest request)
     {
-        _produtoApplicationService.CriarProduto(command);
-        return StatusCode(StatusCodes.Status201Created, new { message = $"Produto {command.Nome} criado com sucesso." });
+        _produtoApplicationService.CriarProduto(request);
+        return StatusCode(StatusCodes.Status201Created, new { message = $"Produto '{request.Nome}' criado com sucesso." });
+    }
+
+    [HttpGet]
+    public IActionResult BuscarTodos()
+    {
+        var produtos = _produtoApplicationService.BuscarTodos();
+        return StatusCode(StatusCodes.Status200OK, produtos);
     }
 }

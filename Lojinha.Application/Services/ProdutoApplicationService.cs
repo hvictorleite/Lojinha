@@ -2,6 +2,7 @@
 using FluentValidation;
 using Lojinha.Application.Commands;
 using Lojinha.Application.Interfaces;
+using Lojinha.Application.Queries;
 using Lojinha.Domain.Entities;
 using Lojinha.Domain.Interfaces.Services;
 
@@ -18,15 +19,20 @@ public class ProdutoApplicationService : IProdutoApplicationService
         _mapper = mapper;
     }
 
-    public void CriarProduto(CriarProdutoCommand command)
+    public void CriarProduto(CriarProdutoRequest request)
     {
-        var produto = _mapper.Map<CriarProdutoCommand, Produto>(command);
+        var produto = _mapper.Map<CriarProdutoRequest, Produto>(request);
 
         var validate = produto.Validate;
         if (!validate.IsValid)
             throw new ValidationException(validate.Errors);
 
         _produtoDomainService.CriarProduto(produto);
+    }
+
+    public IList<ProdutoResponse> BuscarTodos()
+    {
+        return _mapper.Map<IList<Produto>, IList<ProdutoResponse>>(_produtoDomainService.BuscarTodos());
     }
 
     public void Dispose()
