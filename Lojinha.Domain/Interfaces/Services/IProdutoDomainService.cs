@@ -4,11 +4,11 @@ namespace Lojinha.Domain.Interfaces.Services;
 
 public interface IProdutoDomainService : IDisposable
 {
-    void CriarProduto(Produto produto);
-    void EditarProduto(Produto produto);
-    void RemoverProduto(Produto produto);
-    
-    IList<Produto> BuscarTodos();
-    Produto BuscarPorId(Guid id);
-    Produto BuscarPorNome(string nome);
+    Task CriarProduto(Produto produto);
+    Task EditarProduto(Produto produto);
+    Task RemoverProduto(Produto produto);
+
+    Task<IList<Produto>> BuscarTodos();
+    Task<Produto> BuscarPorId(Guid id);
+    Task<Produto> BuscarPorNome(string nome);
 }

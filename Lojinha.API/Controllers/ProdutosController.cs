@@ -16,16 +16,30 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult CriarProduto([FromBody] CriarProdutoRequest request)
+    public async Task<IActionResult> CriarProduto([FromBody] CriarProdutoRequest request)
     {
-        _produtoApplicationService.CriarProduto(request);
+        await _produtoApplicationService.CriarProduto(request);
         return StatusCode(StatusCodes.Status201Created, new { message = $"Produto '{request.Nome}' criado com sucesso." });
     }
 
-    [HttpGet]
-    public IActionResult BuscarTodos()
+    [HttpPut]
+    public async Task<IActionResult> EditarProduto([FromBody] EditarProdutoRequest request)
     {
-        var produtos = _produtoApplicationService.BuscarTodos();
+        await _produtoApplicationService.EditarProduto(request);
+        return StatusCode(StatusCodes.Status200OK, new { message = $"Produto '{request.Nome}' atualizado com sucesso." });
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> BuscarTodos()
+    {
+        var produtos = await _produtoApplicationService.BuscarTodos();
         return StatusCode(StatusCodes.Status200OK, produtos);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> BuscarPorId([FromRoute] Guid id)
+    {
+        var produto = await _produtoApplicationService.BuscarPorId(id);
+        return StatusCode(StatusCodes.Status200OK, produto);
     }
 }

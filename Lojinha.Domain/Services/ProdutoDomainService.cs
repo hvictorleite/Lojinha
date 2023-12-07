@@ -1,3 +1,4 @@
+using Lojinha.Domain.Core;
 using Lojinha.Domain.Entities;
 using Lojinha.Domain.Interfaces.Repositories;
 using Lojinha.Domain.Interfaces.Services;
@@ -13,34 +14,48 @@ public class ProdutoDomainService : IProdutoDomainService
         _produtoRepository = produtoRepository;
     }
 
-    public void CriarProduto(Produto produto)
+    public async Task CriarProduto(Produto produto)
     {
-        _produtoRepository.Create(produto);
+        await _produtoRepository.Create(produto);
     }
 
-    public void EditarProduto(Produto produto)
+    public async Task EditarProduto(Produto produto)
     {
-        _produtoRepository.Update(produto);
+        var produtoSalvo = await _produtoRepository.GetById(produto.Id);
+
+        if (produtoSalvo == null)
+            throw new NullReferenceException("Produto não encontrado. Id inválido.");
+
+        produtoSalvo.Nome = produto.Nome;
+        produtoSalvo.Preco = produto.Preco;
+
+        if (produtoSalvo.Estoque != produto.Estoque)
+        {
+            produtoSalvo.RetirarDoEstoque(produtoSalvo.Estoque);
+            produtoSalvo.AdicionarAoEstoque(produto.Estoque);
+        }
+
+        await _produtoRepository.Update(produtoSalvo);
     }
 
-    public void RemoverProduto(Produto produto)
+    public async Task RemoverProduto(Produto produto)
     {
-        _produtoRepository.Delete(produto);
+        await _produtoRepository.Delete(produto);
     }
 
-    public IList<Produto> BuscarTodos()
+    public async Task<IList<Produto>> BuscarTodos()
     {
-        return _produtoRepository.GetAll().Result;
+        return await _produtoRepository.GetAll();
     }
 
-    public Produto BuscarPorId(Guid id)
+    public async Task<Produto> BuscarPorId(Guid id)
     {
-        return _produtoRepository.GetById(id).Result;
+        return await _produtoRepository.GetById(id);
     }
 
-    public Produto BuscarPorNome(string nome)
+    public async Task<Produto> BuscarPorNome(string nome)
     {
-        return _produtoRepository.GetByNome(nome).Result;
+        return await _produtoRepository.GetByNome(nome);
     }
 
     public void Dispose()

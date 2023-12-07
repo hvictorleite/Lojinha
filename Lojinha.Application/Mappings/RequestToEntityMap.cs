@@ -10,5 +10,7 @@ public class RequestToEntityMap : Profile
     {
         CreateMap<CriarProdutoRequest, Produto>()
             .AfterMap((request, entity) => entity.Id = Guid.NewGuid());
+
+        CreateMap<EditarProdutoRequest, Produto>();
     }
 }
