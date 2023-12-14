@@ -18,28 +18,56 @@ public class ProdutosController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CriarProduto([FromBody] CriarProdutoRequest request)
     {
-        await _produtoApplicationService.CriarProduto(request);
-        return StatusCode(StatusCodes.Status201Created, new { message = $"Produto '{request.Nome}' criado com sucesso." });
+        try
+        {
+            await _produtoApplicationService.CriarProduto(request);
+            return StatusCode(StatusCodes.Status201Created, new { message = $"Produto '{request.Nome}' criado com sucesso." });
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 
     [HttpPut]
     public async Task<IActionResult> EditarProduto([FromBody] EditarProdutoRequest request)
     {
-        await _produtoApplicationService.EditarProduto(request);
-        return StatusCode(StatusCodes.Status200OK, new { message = $"Produto '{request.Nome}' atualizado com sucesso." });
+        try
+        {
+            await _produtoApplicationService.EditarProduto(request);
+            return StatusCode(StatusCodes.Status200OK, new { message = $"Produto '{request.Nome}' atualizado com sucesso." });
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 
     [HttpGet]
     public async Task<IActionResult> BuscarTodos()
     {
-        var produtos = await _produtoApplicationService.BuscarTodos();
-        return StatusCode(StatusCodes.Status200OK, produtos);
+        try
+        {
+            var produtos = await _produtoApplicationService.BuscarTodos();
+            return StatusCode(StatusCodes.Status200OK, produtos);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> BuscarPorId([FromRoute] Guid id)
     {
-        var produto = await _produtoApplicationService.BuscarPorId(id);
-        return StatusCode(StatusCodes.Status200OK, produto);
+        try
+        {
+            var produto = await _produtoApplicationService.BuscarPorId(id);
+            return StatusCode(StatusCodes.Status200OK, produto);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 }
