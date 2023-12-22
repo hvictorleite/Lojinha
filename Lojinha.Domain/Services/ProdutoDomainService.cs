@@ -24,7 +24,7 @@ public class ProdutoDomainService : IProdutoDomainService
         var produtoSalvo = await _produtoRepository.GetById(produto.Id);
 
         if (produtoSalvo == null)
-            throw new NullReferenceException("Produto não encontrado. Id inválido.");
+            throw new NullReferenceException("Produto não encontrado.");
 
         produtoSalvo.Nome = produto.Nome;
         produtoSalvo.Preco = produto.Preco;
@@ -38,8 +38,13 @@ public class ProdutoDomainService : IProdutoDomainService
         await _produtoRepository.Update(produtoSalvo);
     }
 
-    public async Task RemoverProduto(Produto produto)
+    public async Task RemoverProduto(Guid id)
     {
+        var produto = await _produtoRepository.GetById(id);
+
+        if (produto == null)
+            throw new NullReferenceException("Produto não encontrado.");
+
         await _produtoRepository.Delete(produto);
     }
 
@@ -50,7 +55,12 @@ public class ProdutoDomainService : IProdutoDomainService
 
     public async Task<Produto> BuscarPorId(Guid id)
     {
-        return await _produtoRepository.GetById(id);
+        var produto = await _produtoRepository.GetById(id);
+
+        if (produto == null)
+            throw new NullReferenceException("Produto não encontrado.");
+
+        return produto;
     }
 
     public async Task<Produto> BuscarPorNome(string nome)

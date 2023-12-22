@@ -42,6 +42,11 @@ public class ProdutoApplicationService : IProdutoApplicationService
         await _produtoDomainService.EditarProduto(produto);
     }
 
+    public async Task RemoverProduto(Guid id)
+    {
+        await _produtoDomainService.RemoverProduto(id);
+    }
+
     public async Task<IList<ProdutoResponse>> BuscarTodos()
     {
         return _mapper.Map<IList<Produto>, IList<ProdutoResponse>>(await _produtoDomainService.BuscarTodos());

@@ -7,6 +7,7 @@ public interface IProdutoApplicationService : IDisposable
 {
     Task CriarProduto(CriarProdutoRequest request);
     Task EditarProduto(EditarProdutoRequest request);
+    Task RemoverProduto(Guid id);
 
     Task<IList<ProdutoResponse>> BuscarTodos();
     Task<ProdutoResponse> BuscarPorId(Guid id);

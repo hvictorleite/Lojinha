@@ -20,7 +20,6 @@ public class ProdutoValidation : AbstractValidator<Produto>
             .GreaterThan(0).WithMessage("O valor do campo Preco deve ser maior que zero.");
         
         RuleFor(p => p.Estoque)
-            .NotEmpty().WithMessage("O campo Estoque é obrigatório.")
             .Must(isNumeroInteiro).WithMessage("O campo Estoque deve ser um número inteiro.")
             .GreaterThanOrEqualTo(0).WithMessage("O valor do campo Estoque deve ser maior ou igual a zero.");
     }

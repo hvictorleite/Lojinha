@@ -6,7 +6,7 @@ public interface IProdutoDomainService : IDisposable
 {
     Task CriarProduto(Produto produto);
     Task EditarProduto(Produto produto);
-    Task RemoverProduto(Produto produto);
+    Task RemoverProduto(Guid id);
 
     Task<IList<Produto>> BuscarTodos();
     Task<Produto> BuscarPorId(Guid id);
