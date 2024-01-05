@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Lojinha.Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Criacao_Tabela_Produtos : Migration
+    public partial class Produto : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

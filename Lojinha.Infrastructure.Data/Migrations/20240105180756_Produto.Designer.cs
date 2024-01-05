@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lojinha.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(SqlServerContext))]
-    [Migration("20231204123717_Criacao_Tabela_Produtos")]
-    partial class Criacao_Tabela_Produtos
+    [Migration("20240105180756_Produto")]
+    partial class Produto
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
