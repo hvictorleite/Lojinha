@@ -11,11 +11,13 @@ public class Produto : IEntity<Guid>
     public decimal Preco { get; set; }
     public int Estoque { get; private set; }
 
+    public ICollection<ProdutoImagem>? Imagens { get; set; }
+
     public void AdicionarAoEstoque(int quantidade) => Estoque += quantidade;
 
-    public void RetirarDoEstoque(int quantidade){
+    public void RetirarDoEstoque(int quantidade)
+    {
         if (quantidade > Estoque) throw new DomainException("Estoque insuficiente.");
-        
         Estoque -= quantidade;
     }
 

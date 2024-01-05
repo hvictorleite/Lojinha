@@ -12,7 +12,9 @@ public class SqlServerContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new ProdutoMap());
+        modelBuilder.ApplyConfiguration(new ProdutoImagemMap());
     }
 
     public DbSet<Produto> Produtos { get; set; }
+    public DbSet<ProdutoImagem> ProdutoImagens { get; set; }
 }
