@@ -1,7 +1,6 @@
 ﻿using Lojinha.Application.Commands;
 using Lojinha.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
 namespace Lojinha.API.Controllers;
 
@@ -17,11 +16,11 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CriarProduto([FromBody] CriarProdutoRequest request)
+    public async Task<IActionResult> CriarProdutoAsync([FromBody] CriarProdutoRequest request)
     {
         try
         {
-            await _produtoApplicationService.CriarProduto(request);
+            await _produtoApplicationService.CriarProdutoAsync(request);
             return StatusCode(StatusCodes.Status201Created, new { message = $"Produto '{request.Nome}' criado com sucesso." });
         }
         catch (FluentValidation.ValidationException ex)
@@ -35,11 +34,11 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpPut]
-    public async Task<IActionResult> EditarProduto([FromBody] EditarProdutoRequest request)
+    public async Task<IActionResult> EditarProdutoAsync([FromBody] EditarProdutoRequest request)
     {
         try
         {
-            await _produtoApplicationService.EditarProduto(request);
+            await _produtoApplicationService.EditarProdutoAsync(request);
             return StatusCode(StatusCodes.Status200OK, new { message = $"Produto '{request.Nome}' atualizado com sucesso." });
         }
         catch (FluentValidation.ValidationException ex)
@@ -57,11 +56,11 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> RemoverProduto([FromRoute] Guid id)
+    public async Task<IActionResult> RemoverProdutoAsync([FromRoute] Guid id)
     {
         try
         {
-            await _produtoApplicationService.RemoverProduto(id);
+            await _produtoApplicationService.RemoverProdutoAsync(id);
             return StatusCode(StatusCodes.Status200OK, new { message = "Produto removido com sucesso." });
         }
         catch (NullReferenceException ex)
@@ -75,11 +74,11 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> BuscarTodos()
+    public async Task<IActionResult> BuscarTodosAsync()
     {
         try
         {
-            var produtos = await _produtoApplicationService.BuscarTodos();
+            var produtos = await _produtoApplicationService.BuscarTodosAsync();
             return StatusCode(StatusCodes.Status200OK, produtos);
         }
         catch (Exception ex)
@@ -89,11 +88,11 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> BuscarPorId([FromRoute] Guid id)
+    public async Task<IActionResult> BuscarPorIdAsync([FromRoute] Guid id)
     {
         try
         {
-            var produto = await _produtoApplicationService.BuscarPorId(id);
+            var produto = await _produtoApplicationService.BuscarPorIdAsync(id);
             return StatusCode(StatusCodes.Status200OK, produto);
         }
         catch (NullReferenceException ex)

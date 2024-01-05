@@ -9,7 +9,7 @@ public class Produto : IEntity<Guid>
     public Guid Id { get; set; }
     public string? Nome { get; set; }
     public decimal Preco { get; set; }
-    public int Estoque { get; private set; } = 0;
+    public int Estoque { get; private set; }
 
     public void AdicionarAoEstoque(int quantidade) => Estoque += quantidade;
 

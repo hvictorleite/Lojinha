@@ -14,14 +14,14 @@ public class ProdutoDomainService : IProdutoDomainService
         _produtoRepository = produtoRepository;
     }
 
-    public async Task CriarProduto(Produto produto)
+    public async Task CriarProdutoAsync(Produto produto)
     {
-        await _produtoRepository.Create(produto);
+        await _produtoRepository.CreateAsync(produto);
     }
 
-    public async Task EditarProduto(Produto produto)
+    public async Task EditarProdutoAsync(Produto produto)
     {
-        var produtoSalvo = await _produtoRepository.GetById(produto.Id);
+        var produtoSalvo = await _produtoRepository.GetByIdAsync(produto.Id);
 
         if (produtoSalvo == null)
             throw new NullReferenceException("Produto não encontrado.");
@@ -35,27 +35,27 @@ public class ProdutoDomainService : IProdutoDomainService
             produtoSalvo.AdicionarAoEstoque(produto.Estoque);
         }
 
-        await _produtoRepository.Update(produtoSalvo);
+        await _produtoRepository.UpdateAsync(produtoSalvo);
     }
 
-    public async Task RemoverProduto(Guid id)
+    public async Task RemoverProdutoAsync(Guid id)
     {
-        var produto = await _produtoRepository.GetById(id);
+        var produto = await _produtoRepository.GetByIdAsync(id);
 
         if (produto == null)
             throw new NullReferenceException("Produto não encontrado.");
 
-        await _produtoRepository.Delete(produto);
+        await _produtoRepository.DeleteAsync(produto);
     }
 
-    public async Task<IList<Produto>> BuscarTodos()
+    public async Task<IEnumerable<Produto>> BuscarTodosAsync()
     {
-        return await _produtoRepository.GetAll();
+        return await _produtoRepository.GetAllAsync();
     }
 
-    public async Task<Produto> BuscarPorId(Guid id)
+    public async Task<Produto> BuscarPorIdAsync(Guid id)
     {
-        var produto = await _produtoRepository.GetById(id);
+        var produto = await _produtoRepository.GetByIdAsync(id);
 
         if (produto == null)
             throw new NullReferenceException("Produto não encontrado.");
@@ -63,9 +63,9 @@ public class ProdutoDomainService : IProdutoDomainService
         return produto;
     }
 
-    public async Task<Produto> BuscarPorNome(string nome)
+    public async Task<Produto> BuscarPorNomeAsync(string nome)
     {
-        return await _produtoRepository.GetByNome(nome);
+        return await _produtoRepository.GetByNomeAsync(nome);
     }
 
     public void Dispose()

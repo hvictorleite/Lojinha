@@ -5,10 +5,10 @@ namespace Lojinha.Application.Interfaces;
 
 public interface IProdutoApplicationService : IDisposable
 {
-    Task CriarProduto(CriarProdutoRequest request);
-    Task EditarProduto(EditarProdutoRequest request);
-    Task RemoverProduto(Guid id);
+    Task CriarProdutoAsync(CriarProdutoRequest request);
+    Task EditarProdutoAsync(EditarProdutoRequest request);
+    Task RemoverProdutoAsync(Guid id);
 
-    Task<IList<ProdutoResponse>> BuscarTodos();
-    Task<ProdutoResponse> BuscarPorId(Guid id);
+    Task<IEnumerable<ProdutoResponse>> BuscarTodosAsync();
+    Task<ProdutoResponse> BuscarPorIdAsync(Guid id);
 }

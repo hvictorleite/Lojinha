@@ -13,35 +13,35 @@ public class ProdutoRepository : IProdutoRepository
         _context = context;
     }
 
-    public async Task Create(Produto produto)
+    public async Task CreateAsync(Produto produto)
     {
         _context.Entry(produto).State = EntityState.Added;
         await _context.SaveChangesAsync();
     }
 
-    public async Task Update(Produto produto)
+    public async Task UpdateAsync(Produto produto)
     {
         _context.Entry(produto).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
 
-    public async Task Delete(Produto produto)
+    public async Task DeleteAsync(Produto produto)
     {
         _context.Entry(produto).State = EntityState.Deleted;
         await _context.SaveChangesAsync();
     }
 
-    public async Task<IList<Produto>> GetAll()
+    public async Task<IEnumerable<Produto>> GetAllAsync()
     {
         return await _context.Set<Produto>().ToListAsync();
     }
 
-    public async Task<Produto> GetById(Guid id)
+    public async Task<Produto> GetByIdAsync(Guid id)
     {
         return await _context.Set<Produto>().FindAsync(id);
     }
 
-    public async Task<Produto> GetByNome(string nome)
+    public async Task<Produto> GetByNomeAsync(string nome)
     {
         return await _context.Set<Produto>().FirstOrDefaultAsync(x => x.Nome == nome);
     }

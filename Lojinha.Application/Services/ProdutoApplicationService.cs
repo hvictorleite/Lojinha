@@ -20,7 +20,7 @@ public class ProdutoApplicationService : IProdutoApplicationService
         _mapper = mapper;
     }
 
-    public async Task CriarProduto(CriarProdutoRequest request)
+    public async Task CriarProdutoAsync(CriarProdutoRequest request)
     {
         var produto = _mapper.Map<CriarProdutoRequest, Produto>(request);
 
@@ -28,10 +28,10 @@ public class ProdutoApplicationService : IProdutoApplicationService
         if (!validate.IsValid)
             throw new ValidationException(validate.Errors);
 
-        await _produtoDomainService.CriarProduto(produto);
+        await _produtoDomainService.CriarProdutoAsync(produto);
     }
 
-    public async Task EditarProduto(EditarProdutoRequest request)
+    public async Task EditarProdutoAsync(EditarProdutoRequest request)
     {
         var produto = _mapper.Map<EditarProdutoRequest, Produto>(request);
 
@@ -39,22 +39,22 @@ public class ProdutoApplicationService : IProdutoApplicationService
         if (!validate.IsValid)
             throw new ValidationException(validate.Errors);
 
-        await _produtoDomainService.EditarProduto(produto);
+        await _produtoDomainService.EditarProdutoAsync(produto);
     }
 
-    public async Task RemoverProduto(Guid id)
+    public async Task RemoverProdutoAsync(Guid id)
     {
-        await _produtoDomainService.RemoverProduto(id);
+        await _produtoDomainService.RemoverProdutoAsync(id);
     }
 
-    public async Task<IList<ProdutoResponse>> BuscarTodos()
+    public async Task<IEnumerable<ProdutoResponse>> BuscarTodosAsync()
     {
-        return _mapper.Map<IList<Produto>, IList<ProdutoResponse>>(await _produtoDomainService.BuscarTodos());
+        return _mapper.Map<IEnumerable<Produto>, IEnumerable<ProdutoResponse>>(await _produtoDomainService.BuscarTodosAsync());
     }
 
-    public async Task<ProdutoResponse> BuscarPorId(Guid id)
+    public async Task<ProdutoResponse> BuscarPorIdAsync(Guid id)
     {
-        return _mapper.Map<Produto, ProdutoResponse>(await _produtoDomainService.BuscarPorId(id));
+        return _mapper.Map<Produto, ProdutoResponse>(await _produtoDomainService.BuscarPorIdAsync(id));
     }
 
     public void Dispose()

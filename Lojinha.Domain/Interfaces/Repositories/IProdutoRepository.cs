@@ -4,11 +4,11 @@ namespace Lojinha.Domain.Interfaces.Repositories;
 
 public interface IProdutoRepository : IDisposable
 {
-    Task Create(Produto produto);
-    Task Update(Produto produto);
-    Task Delete(Produto produto);
+    Task CreateAsync(Produto produto);
+    Task UpdateAsync(Produto produto);
+    Task DeleteAsync(Produto produto);
 
-    Task<IList<Produto>> GetAll();
-    Task<Produto> GetById(Guid id);
-    Task<Produto> GetByNome(string nome);
+    Task<IEnumerable<Produto>> GetAllAsync();
+    Task<Produto> GetByIdAsync(Guid id);
+    Task<Produto> GetByNomeAsync(string nome);
 }
