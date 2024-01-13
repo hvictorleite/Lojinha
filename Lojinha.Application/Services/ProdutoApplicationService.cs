@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using Lojinha.Application.Commands;
 using Lojinha.Application.Interfaces;
 using Lojinha.Application.Queries;
+using Lojinha.Application.Requests;
 using Lojinha.Domain.Core;
 using Lojinha.Domain.Entities;
 using Lojinha.Domain.Interfaces.Services;

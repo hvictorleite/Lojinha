@@ -1,12 +1,12 @@
-﻿using Lojinha.Application.Commands;
-using Lojinha.Application.Interfaces;
+﻿using Lojinha.Application.Interfaces;
+using Lojinha.Application.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lojinha.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ProdutosController : ControllerBase
+public class ProdutosController : ControllerBase, IDisposable
 {
     private readonly IProdutoApplicationService _produtoApplicationService;
 
@@ -103,5 +103,10 @@ public class ProdutosController : ControllerBase
         {
             return StatusCode(StatusCodes.Status500InternalServerError, new { exception = ex.GetType().Name, errors = ex.Message });
         }
+    }
+
+    public void Dispose()
+    {
+        _produtoApplicationService.Dispose();
     }
 }

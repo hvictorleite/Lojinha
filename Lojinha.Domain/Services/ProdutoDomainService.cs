@@ -1,4 +1,3 @@
-using Lojinha.Domain.Core;
 using Lojinha.Domain.Entities;
 using Lojinha.Domain.Interfaces.Repositories;
 using Lojinha.Domain.Interfaces.Services;
@@ -21,10 +20,7 @@ public class ProdutoDomainService : IProdutoDomainService
 
     public async Task EditarProdutoAsync(Produto produto)
     {
-        var produtoSalvo = await _produtoRepository.GetByIdAsync(produto.Id);
-
-        if (produtoSalvo == null)
-            throw new NullReferenceException("Produto não encontrado.");
+        var produtoSalvo = await BuscarPorIdAsync(produto.Id);
 
         produtoSalvo.Nome = produto.Nome;
         produtoSalvo.Preco = produto.Preco;
@@ -40,11 +36,7 @@ public class ProdutoDomainService : IProdutoDomainService
 
     public async Task RemoverProdutoAsync(Guid id)
     {
-        var produto = await _produtoRepository.GetByIdAsync(id);
-
-        if (produto == null)
-            throw new NullReferenceException("Produto não encontrado.");
-
+        var produto = await BuscarPorIdAsync(id);
         await _produtoRepository.DeleteAsync(produto);
     }
 
@@ -55,12 +47,8 @@ public class ProdutoDomainService : IProdutoDomainService
 
     public async Task<Produto> BuscarPorIdAsync(Guid id)
     {
-        var produto = await _produtoRepository.GetByIdAsync(id);
-
-        if (produto == null)
-            throw new NullReferenceException("Produto não encontrado.");
-
-        return produto;
+        return await _produtoRepository.GetByIdAsync(id)
+            ?? throw new NullReferenceException("Produto não encontrado.");
     }
 
     public async Task<Produto> BuscarPorNomeAsync(string nome)

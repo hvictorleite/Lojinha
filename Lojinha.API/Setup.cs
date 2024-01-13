@@ -12,9 +12,17 @@ public static class Setup
 {
     public static void AddRegisterServices(this WebApplicationBuilder builder)
     {
+        #region Produto
         builder.Services.AddTransient<IProdutoApplicationService, ProdutoApplicationService>();
         builder.Services.AddTransient<IProdutoDomainService, ProdutoDomainService>();
         builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
+        #endregion
+
+        #region ProdutoImagem
+        builder.Services.AddTransient<IProdutoImagemApplicationService, ProdutoImagemApplicationService>();
+        builder.Services.AddTransient<IProdutoImagemDomainService, ProdutoImagemDomainService>();
+        builder.Services.AddTransient<IProdutoImagemRepository, ProdutoImagemRepository>();
+        #endregion
     }
 
     public static void AddEntityFrameworkServices(this WebApplicationBuilder builder)

@@ -1,4 +1,4 @@
-﻿namespace Lojinha.Application.Commands;
+﻿namespace Lojinha.Application.Requests;
 
 public class EditarProdutoRequest
 {

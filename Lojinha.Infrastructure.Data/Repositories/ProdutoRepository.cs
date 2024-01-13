@@ -33,7 +33,7 @@ public class ProdutoRepository : IProdutoRepository
 
     public async Task<IEnumerable<Produto>> GetAllAsync()
     {
-        return await _context.Set<Produto>().ToListAsync();
+        return await _context.Set<Produto>().AsNoTracking().ToListAsync();
     }
 
     public async Task<Produto> GetByIdAsync(Guid id)

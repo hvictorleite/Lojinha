@@ -1,13 +1,15 @@
 ﻿using AutoMapper;
 using Lojinha.Application.Queries;
+using Lojinha.Application.Responses;
 using Lojinha.Domain.Entities;
 
 namespace Lojinha.Application.Mappings;
 
-public class EntitiyToResponseMap : Profile
+public class EntityToResponseMap : Profile
 {
-    public EntitiyToResponseMap()
+    public EntityToResponseMap()
     {
         CreateMap<Produto, ProdutoResponse>();
+        CreateMap<ProdutoImagem, ProdutoImagemResponse>();
     }
 }

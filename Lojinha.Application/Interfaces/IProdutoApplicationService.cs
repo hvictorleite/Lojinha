@@ -1,5 +1,5 @@
-﻿using Lojinha.Application.Commands;
-using Lojinha.Application.Queries;
+﻿using Lojinha.Application.Queries;
+using Lojinha.Application.Requests;
 
 namespace Lojinha.Application.Interfaces;
 

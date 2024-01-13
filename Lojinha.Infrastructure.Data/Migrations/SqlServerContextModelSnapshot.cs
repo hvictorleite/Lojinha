@@ -41,7 +41,7 @@ namespace Lojinha.Infrastructure.Data.Migrations
 
                     b.HasIndex("Nome");
 
-                    b.ToTable("Produtos");
+                    b.ToTable("Produtos", (string)null);
                 });
 
             modelBuilder.Entity("Lojinha.Domain.Entities.ProdutoImagem", b =>
@@ -64,7 +64,7 @@ namespace Lojinha.Infrastructure.Data.Migrations
 
                     b.HasIndex("ProdutoId");
 
-                    b.ToTable("ProdutoImagens");
+                    b.ToTable("ProdutoImagens", (string)null);
                 });
 
             modelBuilder.Entity("Lojinha.Domain.Entities.ProdutoImagem", b =>
