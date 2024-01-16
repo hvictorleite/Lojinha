@@ -21,7 +21,7 @@ public class ProdutoImagemController : ControllerBase, IDisposable
         try
         {
             await _produtoImagemApplicationService.CriarAsync(request);
-            return StatusCode(StatusCodes.Status201Created, new { message = $"ProdutoImagem '{request.Url}' criado com sucesso." });
+            return StatusCode(StatusCodes.Status201Created, new { message = $"ProdutoImagem criado com sucesso." });
         }
         catch (FluentValidation.ValidationException ex)
         {
@@ -43,7 +43,7 @@ public class ProdutoImagemController : ControllerBase, IDisposable
         try
         {
             await _produtoImagemApplicationService.EditarAsync(request);
-            return StatusCode(StatusCodes.Status200OK, new { message = $"ProdutoImagem '{request.Url}' atualizado com sucesso." });
+            return StatusCode(StatusCodes.Status200OK, new { message = $"ProdutoImagem atualizado com sucesso." });
         }
         catch (FluentValidation.ValidationException ex)
         {

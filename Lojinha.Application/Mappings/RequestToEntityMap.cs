@@ -9,14 +9,19 @@ public class RequestToEntityMap : Profile
 {
     public RequestToEntityMap()
     {
+        #region Produto
         CreateMap<CriarProdutoRequest, Produto>()
-            .AfterMap((request, entity) => { entity.Id = Guid.NewGuid(); entity.Imagens = new Collection<ProdutoImagem>(); });
-
-        CreateMap<EditarProdutoRequest, Produto>();
-
-        CreateMap<CriarProdutoImagemRequest, ProdutoImagem>()
             .AfterMap((request, entity) => entity.Id = Guid.NewGuid());
 
-        CreateMap<EditarProdutoImagemRequest, ProdutoImagem>();
+        CreateMap<EditarProdutoRequest, Produto>();
+        #endregion
+
+        #region ProdutoImagem
+        CreateMap<CriarProdutoImagemRequest, ProdutoImagem>()
+            .AfterMap((request, entity) => { entity.Id = Guid.NewGuid(); entity.Base64 = request.Imagem; });
+
+        CreateMap<EditarProdutoImagemRequest, ProdutoImagem>()
+            .AfterMap((request, entity) => entity.Base64 = request.Imagem);
+        #endregion
     }
 }

@@ -3,6 +3,5 @@
 public class EditarProdutoImagemRequest
 {
     public Guid Id { get; set; }
-    public string? Url { get; set; }
-    public string? Base64 { get; set; }
+    public string? Imagem { get; set; }
 }
