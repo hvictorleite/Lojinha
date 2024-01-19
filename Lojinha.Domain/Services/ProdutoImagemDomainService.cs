@@ -1,4 +1,5 @@
 ﻿using Lojinha.Domain.Entities;
+using Lojinha.Domain.Integrations;
 using Lojinha.Domain.Interfaces.Repositories;
 using Lojinha.Domain.Interfaces.Services;
 
@@ -8,16 +9,21 @@ public class ProdutoImagemDomainService : IProdutoImagemDomainService
 {
     private readonly IProdutoImagemRepository _produtoImagemRepository;
     private readonly IProdutoDomainService _produtoDomainService;
+    private readonly ISaveImage _saveImage;
 
-    public ProdutoImagemDomainService(IProdutoImagemRepository produtoImagemRepository, IProdutoDomainService produtoDomainService)
+    public ProdutoImagemDomainService(IProdutoImagemRepository produtoImagemRepository, IProdutoDomainService produtoDomainService, ISaveImage saveImage)
     {
         _produtoImagemRepository = produtoImagemRepository;
         _produtoDomainService = produtoDomainService;
+        _saveImage = saveImage;
     }
 
     public async Task CriarAsync(ProdutoImagem produtoImagem)
     {
         await _produtoDomainService.BuscarPorIdAsync(produtoImagem.ProdutoId);
+
+        produtoImagem.Url = await _saveImage.SaveAndCreateUrlAsync(produtoImagem.Base64);
+
         await _produtoImagemRepository.CreateAsync(produtoImagem);
     }
 

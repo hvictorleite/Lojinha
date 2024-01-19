@@ -1,8 +1,10 @@
 ﻿using Lojinha.Application.Interfaces;
 using Lojinha.Application.Services;
+using Lojinha.Domain.Integrations;
 using Lojinha.Domain.Interfaces.Repositories;
 using Lojinha.Domain.Interfaces.Services;
 using Lojinha.Domain.Services;
+using Lojinha.Infrastructure.Data.Integrations;
 using Lojinha.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +24,7 @@ public static class Setup
         builder.Services.AddTransient<IProdutoImagemApplicationService, ProdutoImagemApplicationService>();
         builder.Services.AddTransient<IProdutoImagemDomainService, ProdutoImagemDomainService>();
         builder.Services.AddTransient<IProdutoImagemRepository, ProdutoImagemRepository>();
+        builder.Services.AddTransient<ISaveImage, SaveImage>();
         #endregion
     }
 
