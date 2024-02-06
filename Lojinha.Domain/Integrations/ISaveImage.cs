@@ -2,5 +2,5 @@
 
 public interface ISaveImage
 {
-    Task<string> SaveAndCreateUrlAsync(string imgBase64);
+    Task<string> SaveAndCreateUrlAsync(string imgBase64, string imageName);
 }

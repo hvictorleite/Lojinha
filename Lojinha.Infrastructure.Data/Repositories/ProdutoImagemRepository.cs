@@ -19,12 +19,6 @@ public class ProdutoImagemRepository : IProdutoImagemRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(ProdutoImagem produtoImagem)
-    {
-        _context.Entry(produtoImagem).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
-    }
-
     public async Task DeleteAsync(ProdutoImagem produtoImagem)
     {
         _context.Entry(produtoImagem).State = EntityState.Deleted;

@@ -19,9 +19,6 @@ public class RequestToEntityMap : Profile
         #region ProdutoImagem
         CreateMap<CriarProdutoImagemRequest, ProdutoImagem>()
             .AfterMap((request, entity) => { entity.Id = Guid.NewGuid(); entity.Base64 = request.Imagem; });
-
-        CreateMap<EditarProdutoImagemRequest, ProdutoImagem>()
-            .AfterMap((request, entity) => entity.Base64 = request.Imagem);
         #endregion
     }
 }

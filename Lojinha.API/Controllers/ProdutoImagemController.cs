@@ -37,13 +37,13 @@ public class ProdutoImagemController : ControllerBase, IDisposable
         }
     }
 
-    [HttpPut]
-    public async Task<IActionResult> EditarProdutoImagemAsync([FromBody] EditarProdutoImagemRequest request)
+    [HttpPost]
+    public async Task<IActionResult> CriarProdutoImagemESalvarImagemAsync([FromBody] CriarProdutoImagemRequest request)
     {
         try
         {
-            await _produtoImagemApplicationService.EditarAsync(request);
-            return StatusCode(StatusCodes.Status200OK, new { message = $"ProdutoImagem atualizado com sucesso." });
+            await _produtoImagemApplicationService.CriarESalvarImagemAsync(request);
+            return StatusCode(StatusCodes.Status200OK, new { message = $"ProdutoImagem criado e salvo com sucesso." });
         }
         catch (FluentValidation.ValidationException ex)
         {

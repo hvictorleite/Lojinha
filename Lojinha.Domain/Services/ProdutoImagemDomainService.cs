@@ -21,20 +21,16 @@ public class ProdutoImagemDomainService : IProdutoImagemDomainService
     public async Task CriarAsync(ProdutoImagem produtoImagem)
     {
         await _produtoDomainService.BuscarPorIdAsync(produtoImagem.ProdutoId);
-
-        produtoImagem.Url = await _saveImage.SaveAndCreateUrlAsync(produtoImagem.Base64);
-
         await _produtoImagemRepository.CreateAsync(produtoImagem);
     }
 
-    public async Task EditarAsync(ProdutoImagem produtoImagem)
+    public async Task CriarESalvarImagemAsync(ProdutoImagem produtoImagem)
     {
-        var produtoImagemSalvo = await BuscarPorIdAsync(produtoImagem.Id);
+        await _produtoDomainService.BuscarPorIdAsync(produtoImagem.ProdutoId);
 
-        produtoImagemSalvo.Url = produtoImagem.Url;
-        produtoImagemSalvo.Base64 = produtoImagem.Base64;
+        produtoImagem.Url = await _saveImage.SaveAndCreateUrlAsync(produtoImagem.Base64, produtoImagem.Id.ToString());
 
-        await _produtoImagemRepository.UpdateAsync(produtoImagemSalvo);
+        await _produtoImagemRepository.CreateAsync(produtoImagem);
     }
 
     public async Task RemoverAsync(Guid id)

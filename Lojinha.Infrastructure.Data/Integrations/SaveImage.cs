@@ -11,7 +11,7 @@ public class SaveImage : ISaveImage
         _filePath = "/Users/Public/Lojinha/imagens";
     }
 
-    public async Task<string> SaveAndCreateUrlAsync(string imgBase64)
+    public async Task<string> SaveAndCreateUrlAsync(string imgBase64, string imageName)
     {
         var fileExtension = imgBase64.Substring(imgBase64.IndexOf("/") + 1,
                                        ((imgBase64.IndexOf(";") - imgBase64.IndexOf("/")) - 1));
@@ -19,7 +19,7 @@ public class SaveImage : ISaveImage
         var base64Code = imgBase64.Substring(imgBase64.IndexOf(",") + 1);
         var imgBytes = Convert.FromBase64String(base64Code);
 
-        var fileName = Guid.NewGuid().ToString() + "." + fileExtension;
+        var fileName = imageName + "." + fileExtension;
 
        if (!Directory.Exists(_filePath))
             Directory.CreateDirectory(_filePath);

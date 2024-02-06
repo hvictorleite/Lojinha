@@ -23,9 +23,9 @@ public class ProdutoImagemApplicationService : IProdutoImagemApplicationService
         await _produtoImagemDomainService.CriarAsync(_mapper.Map<ProdutoImagem>(request));
     }
 
-    public async Task EditarAsync(EditarProdutoImagemRequest request)
+    public async Task CriarESalvarImagemAsync(CriarProdutoImagemRequest request)
     {
-        await _produtoImagemDomainService.EditarAsync(_mapper.Map<ProdutoImagem>(request));
+        await _produtoImagemDomainService.CriarESalvarImagemAsync(_mapper.Map<ProdutoImagem>(request));
     }
 
     public async Task RemoverAsync(Guid id)

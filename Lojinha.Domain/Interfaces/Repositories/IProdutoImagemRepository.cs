@@ -5,7 +5,6 @@ namespace Lojinha.Domain.Interfaces.Repositories;
 public interface IProdutoImagemRepository : IDisposable
 {
     Task CreateAsync(ProdutoImagem produtoImagem);
-    Task UpdateAsync(ProdutoImagem produtoImagem);
     Task DeleteAsync(ProdutoImagem produtoImagem);
 
     Task<IEnumerable<ProdutoImagem>> GetAllAsync();
