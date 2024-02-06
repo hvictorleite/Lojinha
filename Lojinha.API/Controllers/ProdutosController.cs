@@ -20,7 +20,7 @@ public class ProdutosController : ControllerBase, IDisposable
     {
         try
         {
-            await _produtoApplicationService.CriarProdutoAsync(request);
+            await _produtoApplicationService.CriarAsync(request);
             return StatusCode(StatusCodes.Status201Created, new { message = $"Produto '{request.Nome}' criado com sucesso." });
         }
         catch (FluentValidation.ValidationException ex)
@@ -38,7 +38,7 @@ public class ProdutosController : ControllerBase, IDisposable
     {
         try
         {
-            await _produtoApplicationService.EditarProdutoAsync(request);
+            await _produtoApplicationService.EditarAsync(request);
             return StatusCode(StatusCodes.Status200OK, new { message = $"Produto '{request.Nome}' atualizado com sucesso." });
         }
         catch (FluentValidation.ValidationException ex)
@@ -60,7 +60,7 @@ public class ProdutosController : ControllerBase, IDisposable
     {
         try
         {
-            await _produtoApplicationService.RemoverProdutoAsync(id);
+            await _produtoApplicationService.RemoverAsync(id);
             return StatusCode(StatusCodes.Status200OK, new { message = "Produto removido com sucesso." });
         }
         catch (NullReferenceException ex)

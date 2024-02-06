@@ -13,12 +13,12 @@ public class ProdutoDomainService : IProdutoDomainService
         _produtoRepository = produtoRepository;
     }
 
-    public async Task CriarProdutoAsync(Produto produto)
+    public async Task CriarAsync(Produto produto)
     {
         await _produtoRepository.CreateAsync(produto);
     }
 
-    public async Task EditarProdutoAsync(Produto produto)
+    public async Task EditarAsync(Produto produto)
     {
         var produtoSalvo = await BuscarPorIdAsync(produto.Id);
 
@@ -34,7 +34,7 @@ public class ProdutoDomainService : IProdutoDomainService
         await _produtoRepository.UpdateAsync(produtoSalvo);
     }
 
-    public async Task RemoverProdutoAsync(Guid id)
+    public async Task RemoverAsync(Guid id)
     {
         var produto = await BuscarPorIdAsync(id);
         await _produtoRepository.DeleteAsync(produto);

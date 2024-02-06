@@ -3,7 +3,6 @@ using FluentValidation;
 using Lojinha.Application.Interfaces;
 using Lojinha.Application.Queries;
 using Lojinha.Application.Requests;
-using Lojinha.Domain.Core;
 using Lojinha.Domain.Entities;
 using Lojinha.Domain.Interfaces.Services;
 
@@ -20,7 +19,7 @@ public class ProdutoApplicationService : IProdutoApplicationService
         _mapper = mapper;
     }
 
-    public async Task CriarProdutoAsync(CriarProdutoRequest request)
+    public async Task CriarAsync(CriarProdutoRequest request)
     {
         var produto = _mapper.Map<CriarProdutoRequest, Produto>(request);
 
@@ -28,10 +27,10 @@ public class ProdutoApplicationService : IProdutoApplicationService
         if (!validate.IsValid)
             throw new ValidationException(validate.Errors);
 
-        await _produtoDomainService.CriarProdutoAsync(produto);
+        await _produtoDomainService.CriarAsync(produto);
     }
 
-    public async Task EditarProdutoAsync(EditarProdutoRequest request)
+    public async Task EditarAsync(EditarProdutoRequest request)
     {
         var produto = _mapper.Map<EditarProdutoRequest, Produto>(request);
 
@@ -39,12 +38,12 @@ public class ProdutoApplicationService : IProdutoApplicationService
         if (!validate.IsValid)
             throw new ValidationException(validate.Errors);
 
-        await _produtoDomainService.EditarProdutoAsync(produto);
+        await _produtoDomainService.EditarAsync(produto);
     }
 
-    public async Task RemoverProdutoAsync(Guid id)
+    public async Task RemoverAsync(Guid id)
     {
-        await _produtoDomainService.RemoverProdutoAsync(id);
+        await _produtoDomainService.RemoverAsync(id);
     }
 
     public async Task<IEnumerable<ProdutoResponse>> BuscarTodosAsync()

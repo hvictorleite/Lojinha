@@ -38,7 +38,7 @@ public class ProdutoImagemController : ControllerBase, IDisposable
     }
 
     [HttpPost]
-    public async Task<IActionResult> CriarProdutoImagemESalvarImagemAsync([FromBody] CriarProdutoImagemRequest request)
+    public async Task<IActionResult> CriarESalvarProdutoImagemAsync([FromBody] CriarProdutoImagemRequest request)
     {
         try
         {
